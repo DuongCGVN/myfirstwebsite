@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 30px 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+}
+.logo {
+    font-size: 2em;
+    color: #555;
+    cursor: default;
+}
+.logo span {
+    color: #7d2ae8;
+}
+.navigation {
+    margin-left: -300px;
+}
+.navigation a {
+    font-size: 1.1em;
+    color: #555;
+    text-decoration: none;
+    margin-right: 40px;
+    font-weight: 500;
+    transition: .3s;
+}
+.navigation a:hover {
+    color: #7d2ae8;
+}
+.container1{position: relative;}
+.btn-talk {
+    color: #fff;
+    text-decoration: none;
+    padding: 8px 8px;
+    border-radius: 20px;
+    transition: .3s;
+}
+.btn-talk img {
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    background: #7d2ae8;
+    border-radius: 50%;
+    margin-right: 22px;
+    text-align: right;
+    line-height: 35px;
+    border: 2px solid #fff;
+    outline: 2px solid #7d2ae8;
+    transition: .3s;
+}
+.btn-talk:hover {
+    color: #7d2ae8;
+    background: transparent;
+}
+.home {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background: url('https://ik.imagekit.io/DuongCG/myinfowweb/1.png?updatedAt=1736436915315');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    padding: 30px 100px;
+}
+.content {
+    max-width: 500px;
+    color: #555;
+}
+.content h2 {
+    font-size: 3em;
+}
+.content h2 span {
+    color: #7d2ae8;
+}
+.content h4 {
+    font-size: 2em;
+}
+.content p {
+    padding: 10px 0 40px 0;
+}
+.btn-group a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 40px;
+    background: #7d2ae8;
+    border-radius: 10px;
+    border: 2px solid #7d2ae8;
+    font-weight: 500;
+    transition: .3s;
+}
+.btn-group a:hover:nth-child(1) {
+    color: #7d2ae8;
+    background: transparent;
+}
+.btn-group a:nth-child(2) {
+    color: #7d2ae8;
+    background: transparent;
+    margin-left: 10px;
+    padding: 10px 10px;
+}
+.btn-group a:hover:nth-child(2) {
+    color: #fff;
+    background: #7d2ae8;
+}
+.social-icons {
+    position: absolute;
+    bottom: 50px;
+}
+.social-icons a {
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    background: #7d2ae8;
+    border-radius: 50%;
+    margin-right: 22px;
+    text-align: center;
+    line-height: 35px;
+    border: 1px solid #fff;
+    outline: 2px solid #7d2ae8;
+    transition: .3s;
+}
+.social-icons a:hover {
+    transform: translateY(-5px);
+}
+.social-icons a i {
+    color: #fff;
+}
+footer {background-color: rgb(184, 180, 180);padding: 40px;}
+
+    </style>
+</head>
+<body>
+    <header>
+        <h2 class="logo"><span>D</span>ương <span>CG</span></h2>
+        <nav class="navigation">
+            <a href="index.html">Home</a>
+            <a href="myschool.html">Về ngôi trường thân yêu</a>
+            <a href="memory.html">kỉ niệm về cấp 3</a>
+            <a href="tracuu.html">Tra cứu điểm các kì thi tại trường</a>
+        </nav>
+        <div class="btn-talk"><img src="https://ik.imagekit.io/DuongCG/myinfowweb/logo.png?updatedAt=1736436927856"></div>
+    </header>
+    <section class="home">
+        <div class="content">
+            <h2>Xin chào,mình là <span>Tín Dương</span></h2>
+            <h4>Học tại THPT Đường An</h4>
+            <pre>Thành viên lớp 10G(2022-2023)
+                             11G(2023-2024)
+                             12A(2024-2025)
+            </pre>
+            <div class="btn-group">
+                <a href="https://www.facebook.com/duongs2007">Kết nối với mình</a>
+                <a href="https://www.facebook.com/doantncsthptduongan">Ngôi trường mình theo học</a>
+            </div>
+            <div class="social-icons">
+                <a href="https://github.com/DuongCGVN"><i class="fa-brands fa-github"></i></a>
+                <a href="https://www.facebook.com/duongs2007"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/duongs2007/"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+        </div>
+    </section>
+</body>
+<footer id="contact">
+    <ul>
+        <li><pre>Email:<a href="mailto:devduongcg2007@gmail.com">devduongcg2007@gmail.com</a></pre></li>
+        <li><pre>Số điện thoại: 0385262719</pre> </li>
+        <li><pre>Địa chỉ:Thôn Đan Loan-Nhân Quyền-Bình Giang-Hải Dương</pre> </li>
+        <li><pre>©Website này được viết bởi:<em>Tín Dương</em></pre></li>
+    </ul>
+</footer>
+</html>

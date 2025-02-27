@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tra cứu điểm thi</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <style>
+    body {
+      font-family: sans-serif;
+    }
+    .container {
+      width: 500px;
+      margin: 0 auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    input[type="text"], select {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      box-sizing: border-box;
+    }
+    button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+    #result {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+    #noti {color: yellow;background-color: red;font-family: 'Times New Roman', Times, serif;text-align: center;}
+    footer {background-color: rgb(184, 180, 180);padding: 40px;}
+    .logo {
+    font-size: 2em;
+    color: #555;
+    cursor: default;
+}
+.logo span {
+    color: #7d2ae8;
+}
+.navigation {
+    margin-left: -300px;
+}
+.navigation a {
+    font-size: 1.1em;
+    color: #555;
+    text-decoration: none;
+    margin-right: 40px;
+    font-weight: 500;
+    transition: .3s;
+}
+.navigation a:hover {
+    color: #7d2ae8;
+}
+.container1{position: relative;}
+.btn-talk {
+    color: #fff;
+    text-decoration: none;
+    padding: 8px 8px;
+    border-radius: 20px;
+    transition: .3s;
+}
+.btn-talk img {
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    background: #7d2ae8;
+    border-radius: 50%;
+    margin-right: 22px;
+    text-align: right;
+    line-height: 35px;
+    border: 2px solid #fff;
+    outline: 2px solid #7d2ae8;
+    transition: .3s;
+}
+.btn-talk:hover {
+    color: #7d2ae8;
+    background: transparent;
+}
+  </style>
+</head>
+<body>
+  <header>
+  <h2 class="logo"><span>D</span>ương <span>CG</span></h2>
+  <header>
+    <nav class="navigation" style="text-align: center">
+        <a href="index.html">Home</a>
+        <a href="myschool.html">Về ngôi trường thân yêu</a>
+        <a href="memory.html">kỉ niệm về cấp 3</a>
+        <a href="tracuu.html">Tra cứu điểm các kì thi tại trường</a>
+    </nav>
+  <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="myModalLabel">Bạn Dương bảo rằng</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Chú ý bạn nhé,trình tra cứu chỉ khả dụng với học sinh khối 12<br>
+          <p style="text-align: center;">Xin lỗi vì sự bất tiện＞﹏＜</p> 
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    window.onload = function() {
+      const myModal = new bootstrap.Modal(document.getElementById('myModal'));
+      myModal.show();
+    };
+  </script>
+  <H1 id="noti">Chức năng đang được phát triển,hãy chờ nhé!</H1>
+  </header>
+  <div class="container">
+    <h2 style="text-align: center;">Tra cứu điểm thi</h2>
+    <label for="kythi">Chọn kỳ thi:</label>
+    <select id="kythi">
+      <option value="thptqg2023">Khảo sát lần 1</option>
+      <option value="thptqg2022">Giữa học kì 1</option>
+      <option value="dgnl2023">Thi thử tốt nghiệp thpt lần 1</option>
+      </select>
+
+    <label for="id">Nhập số báo danh:</label>
+    <input type="text" id="sbd" placeholder="Nhập số báo danh">
+    <button onclick="info()">Tra cứu</button><br>
+    <div id="result"></div>
+  </div>
+  <script>
+    function traCuu(){
+    const apiKey = 'f2a33287f31a50f7cbdc2247911af3a287ae83f0';
+    const spreadsheetId = '1ITkqbtBD3LDtnP5RKkYuw-IlIfa9413tckqON3cf3bA';
+    const range = 'Sheet1!A:B'; // Cột A và B của Sheet1
+    const studentId = document.getElementById('studentId').value;
+    const resultDiv = document.getElementById('result');
+    resultDiv.innerHTML = ''; // Xóa kết quả cũ
+
+    const url = `https://sheets.googleapis.com/v4/spreadsheets/<span class="math-inline">\{spreadsheetId\}/values/</span>{range}?key=${apiKey}`;
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            if (data.values) {
+                const rows = data.values;
+                let scoreFound = false;
+                for (let i = 0; i < rows.length; i++) {
+                    if (rows[i][0] === studentId) { // Giả sử cột A là mã sinh viên
+                        resultDiv.innerHTML = `Điểm của sinh viên ${studentId}: ${rows[i][1]}`; // Giả sử cột B là điểm
+                        scoreFound = true;
+                        break;
+                    }
+                }
+                if (!scoreFound) {
+                    resultDiv.innerHTML = `Không tìm thấy điểm cho sinh viên ${studentId}`;
+                }
+            } else {
+                resultDiv.innerHTML = 'Không có dữ liệu.';
+            }
+        })
+        .catch(error => {
+            console.error('Lỗi:', error);
+            resultDiv.innerHTML = 'Đã xảy ra lỗi khi tra cứu.';
+        });
+}
+  </script>
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<footer id="contact">
+  <ul>
+      <li><pre>Email:<a href="mailto:devduongcg2007@gmail.com">devduongcg2007@gmail.com</a></pre></li>
+      <li><pre>Số điện thoại: 0385262719</pre> </li>
+      <li><pre>Địa chỉ:Thôn Đan Loan-Nhân Quyền-Bình Giang-Hải Dương</pre> </li>
+      <li><pre>©Website này được viết bởi:<em>Tín Dương</em></pre></li>
+  </ul>
+</footer>
+</body>
+</html>
